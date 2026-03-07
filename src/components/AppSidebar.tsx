@@ -1,6 +1,7 @@
-import { Heart, LayoutDashboard, Calendar, CheckSquare, MessageCircle, Wallet, Activity } from "lucide-react";
+import { LayoutDashboard, Calendar, CheckSquare, Wallet, Activity, FileText, Home } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 import {
   Sidebar,
   SidebarContent,
@@ -14,13 +15,13 @@ import {
 } from "@/components/ui/sidebar";
 
 const items = [
-  { title: "Início", url: "/", icon: Heart },
+  { title: "Início", url: "/", icon: Home },
   { title: "Painel", url: "/dashboard", icon: LayoutDashboard },
   { title: "Agenda", url: "/agenda", icon: Calendar },
   { title: "Tarefas", url: "/tarefas", icon: CheckSquare },
   { title: "Saúde", url: "/saude", icon: Activity },
+  { title: "Documentos", url: "/documentos", icon: FileText },
   { title: "Financeiro", url: "/financeiro", icon: Wallet },
-  { title: "Conversa", url: "/chat", icon: MessageCircle },
 ];
 
 export function AppSidebar() {
@@ -31,11 +32,9 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" className="border-r-0">
       <div className="p-4 flex items-center gap-2">
-        <div className="w-9 h-9 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #A8C8E8, #D4C0E8)" }}>
-          <Heart className="w-5 h-5" style={{ color: "#4A7FA8" }} strokeWidth={1.5} />
-        </div>
+        <img src={logo} alt="Cuida Junto" className="w-9 h-9 object-contain" />
         {!collapsed && (
-          <span className="font-display font-bold text-lg text-foreground">CuidarJuntos</span>
+          <span className="font-display font-bold text-lg text-foreground">Cuida Junto</span>
         )}
       </div>
       <SidebarContent>
@@ -53,7 +52,7 @@ export function AppSidebar() {
                         className={`rounded-2xl transition-all duration-200 ${isActive ? "bg-primary/20" : "hover:bg-muted"}`}
                         activeClassName="bg-primary/20 font-semibold"
                       >
-                        <item.icon className="mr-2 h-5 w-5" strokeWidth={1.5} style={isActive ? { color: "#4A7FA8" } : {}} />
+                        <item.icon className="mr-2 h-5 w-5" strokeWidth={1.5} style={isActive ? { color: "#307EC2" } : {}} />
                         {!collapsed && <span>{item.title}</span>}
                       </NavLink>
                     </SidebarMenuButton>
@@ -66,7 +65,7 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter className="p-4">
         <div className="flex items-center gap-3">
-          <div className="avatar-pastel w-9 h-9 text-xs" style={{ background: "#A8C8E8", color: "#4A7FA8" }}>
+          <div className="avatar-pastel w-9 h-9 text-xs" style={{ background: "#83B4DF", color: "#307EC2" }}>
             AC
           </div>
           {!collapsed && (
