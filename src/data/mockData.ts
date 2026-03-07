@@ -1,9 +1,26 @@
 export const paciente = {
-  nome: "Maria Oliveira",
+  nome: "Maria das Graças",
   idade: 78,
-  condicao: "Pós-cirurgia de quadril",
+  condicao: "Alzheimer leve + Hipertensão",
   medico: "Dr. Carlos Menezes",
   proximaConsulta: "2024-02-15",
+  tipoSanguineo: "O+",
+  diagnosticos: [
+    { nome: "Alzheimer leve", dataDeteccao: "2022-03-10", medico: "Dra. Fernanda Lima", observacao: "Estágio inicial, acompanhamento semestral" },
+    { nome: "Hipertensão arterial", dataDeteccao: "2018-06-20", medico: "Dr. Carlos Menezes", observacao: "Controlada com medicação diária" },
+    { nome: "Osteoporose", dataDeteccao: "2020-11-15", medico: "Dr. Ricardo Santos", observacao: "Suplementação de cálcio e vitamina D" },
+  ],
+  alergias: [
+    { substancia: "Dipirona", tipo: "Medicamento", gravidade: "Moderada" },
+    { substancia: "Camarão", tipo: "Alimento", gravidade: "Leve" },
+    { substancia: "Látex", tipo: "Material", gravidade: "Leve" },
+  ],
+  medicacoes: [
+    { nome: "Donepezila 5mg", horario: "08:00", frequencia: "Diário" },
+    { nome: "Losartana 50mg", horario: "08:00", frequencia: "Diário" },
+    { nome: "Hidroclorotiazida 25mg", horario: "08:00", frequencia: "Diário" },
+    { nome: "Cálcio + Vit D", horario: "12:00", frequencia: "Diário" },
+  ],
 };
 
 export interface Familiar {
@@ -18,7 +35,7 @@ export interface Familiar {
 }
 
 export const familiares: Familiar[] = [
-  { id: 1, nome: "Ana Costa", relacao: "Filha", cor: "#A8C8E8", corTexto: "#4A7FA8", avatar: "AC", tarefasSemana: 8, tarefasConcluidas: 6 },
+  { id: 1, nome: "Ana Costa", relacao: "Filha", cor: "#83B4DF", corTexto: "#307EC2", avatar: "AC", tarefasSemana: 8, tarefasConcluidas: 6 },
   { id: 2, nome: "Pedro Costa", relacao: "Filho", cor: "#B8DFC8", corTexto: "#4A8A6A", avatar: "PC", tarefasSemana: 5, tarefasConcluidas: 3 },
   { id: 3, nome: "Lucia Ramos", relacao: "Filha", cor: "#F4C5A8", corTexto: "#C0724A", avatar: "LR", tarefasSemana: 7, tarefasConcluidas: 7 },
   { id: 4, nome: "Carlos Costa", relacao: "Filho", cor: "#D4C0E8", corTexto: "#7A5AA8", avatar: "CC", tarefasSemana: 4, tarefasConcluidas: 2 },
@@ -54,20 +71,38 @@ export const despesas = [
   { id: 5, data: "2024-02-10", descricao: "Alimentação especial", categoria: "Alimentação", valor: 150, pagoPor: 1 },
 ];
 
-export const mensagensChat = [
-  { id: 1, autor: 1, texto: "Bom dia! Já dei a medicação da manhã para a mãe. Ela está bem disposta hoje 😊", horario: "08:15" },
-  { id: 2, autor: 3, texto: "Ótimo, Ana! Vou passar lá às 12h pro almoço e medicação da tarde.", horario: "08:30" },
-  { id: 3, autor: 2, texto: "Pessoal, lembrem que amanhã tem consulta com o cardiologista às 9:30. Quem leva?", horario: "09:00" },
-  { id: 4, autor: 1, texto: "Eu levo! Já está na minha agenda.", horario: "09:05" },
-  { id: 5, autor: 4, texto: "Preciso comprar os medicamentos da farmácia amanhã. Alguém tem a lista atualizada?", horario: "10:20" },
-  { id: 6, autor: 3, texto: "Vou te mandar a lista, Carlos. A Dra. atualizou a receita semana passada.", horario: "10:25" },
-  { id: 7, autor: 2, texto: "A fisioterapia de hoje foi boa. Ela já está conseguindo dar alguns passos com o andador! 🎉", horario: "11:00" },
+export interface Documento {
+  id: number;
+  nome: string;
+  categoria: "receita" | "exame" | "laudo" | "outro";
+  data: string;
+  tamanho: string;
+  adicionadoPor: number;
+}
+
+export const documentos: Documento[] = [
+  { id: 1, nome: "Receita - Donepezila 5mg", categoria: "receita", data: "2024-02-01", tamanho: "245 KB", adicionadoPor: 1 },
+  { id: 2, nome: "Receita - Losartana 50mg", categoria: "receita", data: "2024-01-15", tamanho: "198 KB", adicionadoPor: 3 },
+  { id: 3, nome: "Hemograma completo - Jan/24", categoria: "exame", data: "2024-01-20", tamanho: "1.2 MB", adicionadoPor: 1 },
+  { id: 4, nome: "Tomografia craniana", categoria: "exame", data: "2023-12-10", tamanho: "4.5 MB", adicionadoPor: 2 },
+  { id: 5, nome: "Ecocardiograma", categoria: "exame", data: "2024-01-28", tamanho: "2.1 MB", adicionadoPor: 1 },
+  { id: 6, nome: "Laudo neurológico - Alzheimer", categoria: "laudo", data: "2022-03-10", tamanho: "320 KB", adicionadoPor: 3 },
+  { id: 7, nome: "Laudo cardiológico", categoria: "laudo", data: "2024-01-30", tamanho: "280 KB", adicionadoPor: 1 },
+  { id: 8, nome: "Cartão do plano de saúde", categoria: "outro", data: "2024-01-01", tamanho: "150 KB", adicionadoPor: 4 },
+  { id: 9, nome: "Procuração para saúde", categoria: "outro", data: "2023-06-15", tamanho: "890 KB", adicionadoPor: 1 },
 ];
+
+export const categoriaDocumentos: Record<string, { label: string; cor: string; corTexto: string }> = {
+  receita: { label: "Receitas", cor: "#83B4DF", corTexto: "#307EC2" },
+  exame: { label: "Exames", cor: "#B8DFC8", corTexto: "#4A8A6A" },
+  laudo: { label: "Laudos", cor: "#D4C0E8", corTexto: "#7A5AA8" },
+  outro: { label: "Outros", cor: "#F4C5A8", corTexto: "#C0724A" },
+};
 
 export const getFamiliar = (id: number) => familiares.find(f => f.id === id);
 
 export const categoriaCores: Record<string, string> = {
-  saude: "#A8C8E8",
+  saude: "#83B4DF",
   consulta: "#D4C0E8",
   compras: "#F8E8A0",
   higiene: "#B8DFC8",
@@ -78,5 +113,5 @@ export const categoriaCores: Record<string, string> = {
 export const statusLabels: Record<string, { label: string; color: string; bg: string }> = {
   concluida: { label: "Concluída", color: "#4A8A6A", bg: "#B8DFC8" },
   pendente: { label: "Pendente", color: "#C0724A", bg: "#F4C5A8" },
-  agendada: { label: "Agendada", color: "#4A7FA8", bg: "#A8C8E8" },
+  agendada: { label: "Agendada", color: "#307EC2", bg: "#83B4DF" },
 };
