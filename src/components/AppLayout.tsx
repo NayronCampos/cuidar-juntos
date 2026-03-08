@@ -3,6 +3,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { MobileNav } from "@/components/MobileNav";
 import { Bell } from "lucide-react";
 import elderlyProfile from "@/assets/elderly-profile.jpg";
+import logo from "@/assets/logo.png";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -20,9 +21,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             <div className="flex items-center gap-2">
               <SidebarTrigger className="hidden md:flex" />
               <div className="md:hidden flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #A8C8E8, #D4C0E8)" }}>
-                  <span className="text-xs font-bold" style={{ color: "#4A7FA8" }}>C</span>
-                </div>
+                <img src={logo} alt="Cuida Comigo" className="w-8 h-8 object-contain" />
                 <span className="font-display font-bold text-foreground">Cuida Comigo</span>
               </div>
             </div>
