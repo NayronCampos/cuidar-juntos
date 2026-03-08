@@ -78,14 +78,15 @@ export interface Documento {
   data: string;
   tamanho: string;
   adicionadoPor: number;
+  url?: string;
 }
 
 export const documentos: Documento[] = [
-  { id: 1, nome: "Receita - Donepezila 5mg", categoria: "receita", data: "2024-02-01", tamanho: "245 KB", adicionadoPor: 1 },
+  { id: 1, nome: "Receita - Donepezila 5mg", categoria: "receita", data: "2024-02-01", tamanho: "245 KB", adicionadoPor: 1, url: "/receita.jpg" },
   { id: 2, nome: "Receita - Losartana 50mg", categoria: "receita", data: "2024-01-15", tamanho: "198 KB", adicionadoPor: 3 },
-  { id: 3, nome: "Hemograma completo - Jan/24", categoria: "exame", data: "2024-01-20", tamanho: "1.2 MB", adicionadoPor: 1 },
+  { id: 3, nome: "Hemograma completo - Jan/24", categoria: "exame", data: "2024-01-20", tamanho: "1.2 MB", adicionadoPor: 1, url: "/hemograma.png" },
   { id: 4, nome: "Tomografia craniana", categoria: "exame", data: "2023-12-10", tamanho: "4.5 MB", adicionadoPor: 2 },
-  { id: 5, nome: "Ecocardiograma", categoria: "exame", data: "2024-01-28", tamanho: "2.1 MB", adicionadoPor: 1 },
+  { id: 5, nome: "Ecocardiograma", categoria: "exame", data: "2024-01-28", tamanho: "2.1 MB", adicionadoPor: 1, url: "/ecocardiograma.jpg" },
   { id: 6, nome: "Laudo neurológico - Alzheimer", categoria: "laudo", data: "2022-03-10", tamanho: "320 KB", adicionadoPor: 3 },
   { id: 7, nome: "Laudo cardiológico", categoria: "laudo", data: "2024-01-30", tamanho: "280 KB", adicionadoPor: 1 },
   { id: 8, nome: "Cartão do plano de saúde", categoria: "outro", data: "2024-01-01", tamanho: "150 KB", adicionadoPor: 4 },

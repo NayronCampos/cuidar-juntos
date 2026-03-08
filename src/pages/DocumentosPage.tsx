@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { documentos, categoriaDocumentos, getFamiliar } from "@/data/mockData";
-import { FileText, Upload, Filter, Search, Calendar, User } from "lucide-react";
+import { FileText, Upload, Filter, Search, Calendar, User, Eye, X } from "lucide-react";
 
 const categorias = ["todas", "receita", "exame", "laudo", "outro"] as const;
 
 export default function DocumentosPage() {
   const [filtro, setFiltro] = useState<string>("todas");
   const [busca, setBusca] = useState("");
+  const [documentoSelecionado, setDocumentoSelecionado] = useState<string | null>(null);
 
   const docs = documentos
     .filter(d => filtro === "todas" || d.categoria === filtro)
@@ -115,6 +116,14 @@ export default function DocumentosPage() {
                   {fam.avatar}
                 </div>
               )}
+              {doc.url && (
+                <button
+                  onClick={() => setDocumentoSelecionado(doc.url as string)}
+                  className="w-8 h-8 rounded-full bg-muted flex items-center justify-center self-center ml-2 transition-all hover:bg-primary/20 hover:text-primary"
+                >
+                  <Eye className="w-4 h-4 text-muted-foreground" />
+                </button>
+              )}
             </div>
           );
         })}
@@ -124,6 +133,29 @@ export default function DocumentosPage() {
         <div className="text-center py-12 text-muted-foreground">
           <FileText className="w-12 h-12 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
           <p className="font-body text-sm">Nenhum documento encontrado</p>
+        </div>
+      )}
+
+      {/* Image Preview Modal */}
+      {documentoSelecionado && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 animate-in fade-in"
+          onClick={() => setDocumentoSelecionado(null)}
+        >
+          <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
+            <button 
+              className="absolute -top-10 right-0 p-2 text-white/70 hover:text-white transition-colors"
+              onClick={() => setDocumentoSelecionado(null)}
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img 
+              src={documentoSelecionado} 
+              alt="Visualização do Documento" 
+              className="max-w-full max-h-[85vh] object-contain rounded-lg border border-white/10 shadow-2xl" 
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
         </div>
       )}
     </div>
