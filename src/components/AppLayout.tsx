@@ -2,6 +2,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { MobileNav } from "@/components/MobileNav";
 import { Bell } from "lucide-react";
+import profileImg from "@/assets/older_person_profile.png";
+import logo from "@/assets/logo.png";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -19,10 +21,8 @@ export function AppLayout({ children }: AppLayoutProps) {
             <div className="flex items-center gap-2">
               <SidebarTrigger className="hidden md:flex" />
               <div className="md:hidden flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #A8C8E8, #D4C0E8)" }}>
-                  <span className="text-xs font-bold" style={{ color: "#4A7FA8" }}>C</span>
-                </div>
-                <span className="font-display font-bold text-foreground">CuidarJuntos</span>
+                <img src={logo} alt="Cuida Comigo" className="w-8 h-8 object-contain" />
+                <span className="font-display font-bold text-foreground">Cuida Comigo</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -32,9 +32,7 @@ export function AppLayout({ children }: AppLayoutProps) {
                   3
                 </span>
               </button>
-              <div className="avatar-pastel w-8 h-8 text-xs" style={{ background: "#A8C8E8", color: "#4A7FA8" }}>
-                AC
-              </div>
+              <img src={profileImg} alt="User Profile" className="w-8 h-8 rounded-full object-cover" />
             </div>
           </header>
           <main className="flex-1 overflow-auto pb-20 md:pb-0">

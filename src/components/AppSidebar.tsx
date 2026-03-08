@@ -2,6 +2,7 @@ import { LayoutDashboard, Calendar, CheckSquare, Wallet, Activity, FileText, Hom
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import profileImg from "@/assets/older_person_profile.png";
 import {
   Sidebar,
   SidebarContent,
@@ -32,9 +33,9 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" className="border-r-0">
       <div className="p-4 flex items-center gap-2">
-        <img src={logo} alt="Cuida Junto" className="w-9 h-9 object-contain" />
+        <img src={logo} alt="Cuida Comigo" className="w-9 h-9 object-contain" />
         {!collapsed && (
-          <span className="font-display font-bold text-lg text-foreground">Cuida Junto</span>
+          <span className="font-display font-bold text-lg text-foreground">Cuida Comigo</span>
         )}
       </div>
       <SidebarContent>
@@ -65,9 +66,7 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter className="p-4">
         <div className="flex items-center gap-3">
-          <div className="avatar-pastel w-9 h-9 text-xs" style={{ background: "#83B4DF", color: "#307EC2" }}>
-            AC
-          </div>
+          <img src={profileImg} alt="Ana Costa" className="w-9 h-9 rounded-full object-cover" />
           {!collapsed && (
             <div>
               <p className="font-display font-semibold text-sm">Ana Costa</p>
